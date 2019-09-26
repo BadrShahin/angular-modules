@@ -1,0 +1,15 @@
+.moving_arrows_container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.save_cancel_btns_container { 
+  display: block;
+}
+.moving_btn {
+  padding: 4px 10px; 
+  border: 1px solid #cccccc; 
+  margin-bottom: 10px;
+  background-color: #eeeeee;
+}

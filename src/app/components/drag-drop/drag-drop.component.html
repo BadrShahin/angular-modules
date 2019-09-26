@@ -1,0 +1,79 @@
+<div class="container">
+    <!-- <h3 class="text-center my-4">Drag Drop Module</h3> -->
+    <div class="form-group row" style="height: 100%">
+        <div class="col-md-5">
+            <!-- drop down list of customers area -->
+            <mat-form-field style="width: 100%">
+                <mat-label>Customers Area</mat-label>
+                <mat-select [(value)]="selected" [(ngModel)]="area" name="area"
+                    (selectionChange)="onSelectCustomersArea($event)" multiple>
+                    <mat-option *ngFor="let area of customersList" [value]="area">{{area.userId}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- list of customers -->
+            <select class="form-control p-0" [(ngModel)]="selectedToAdd" multiple name="myselecttsms2"
+                style="height: 100vh">
+                <option class="d-flex justify-content-between align-items-center list-group-item p-1"
+                    *ngFor="let customer of customersList" [ngValue]="customer">{{customer.title}}</option>
+            </select>
+        </div>
+        <!-- moving arrows container  -->
+        <div class="col-md-2 text-center moving_arrows_container">
+            <div>
+                <div class="col-12">
+                    <button (click)="addCustomersToCollectorBtn()" class="btn moving_btn">
+                        <i class="fa fa-angle-double-right" style="font-size: 32px; color: #888888"></i>
+                    </button>
+                </div>
+                <div class="col-12">
+                    <button (click)="removeCustomersFromCollectorBtn()" class="btn moving_btn">
+                        <i class="fa fa-angle-double-left" style="font-size: 32px; color: #888888"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <!-- drop down list of collectors -->
+            <mat-form-field style="width: 100%">
+                <mat-label>Collectors</mat-label>
+                <mat-select [(ngModel)]="collector" name="collector" (selectionChange)="onSelectCollector($event)"
+                    multiple>
+                    <mat-option *ngFor="let collector of collectorsList" [value]="collector">{{collector.userId}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- list of customers related to specified collector -->
+            <select class="form-control p-0" [(ngModel)]="selectedToRemove" multiple name="myselecttsms"
+                style="height: 100vh">
+                <option class="d-flex justify-content-between align-items-center list-group-item p-1"
+                    *ngFor="let customer of selectedCustomers" [ngValue]="customer">{{customer.title}}</option>
+            </select>
+        </div>
+    </div>
+    <!-- Save And Cancel Btns container  -->
+    <div class="text-center save_cancel_btns_container">
+        <div style="text-align: right;">
+            <button (click)="removeCustomersFromCollectorCancelBtn()" class="btn btn-danger mx-1">
+                Cancel
+            </button>
+            <button (click)="addCustomersToCollectorSaveBtn()" class="btn btn-primary">
+                Save Changes
+            </button>
+        </div>
+        <br>
+    </div>
+</div>
+
+
+<!-- <mat-form-field style="width: 100%">
+    <mat-label>Toppings</mat-label>
+    <mat-select multiple placeholder="Select your option" [(ngModel)]="option" name="action"
+        (selectionChange)="onChange()">
+        <mat-option *ngFor="let option of actions" [value]="option">
+            {{option}}
+        </mat-option>
+    </mat-select>
+</mat-form-field> -->
